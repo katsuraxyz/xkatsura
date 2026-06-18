@@ -77,7 +77,7 @@ body {
 .gabriel-bg {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('../images/gabriel.png');
+  background-image: url('../images/gabriel.webp');
   background-size: cover;
   background-position: center;
   z-index: 1;
