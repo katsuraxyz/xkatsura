@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xkatsura | Explore</title>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .wsj-logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      height: 100%;
+      background-color: #fff;
+      transition: background-color 0.3s ease;
+    }
+    
+    .interactive:hover .wsj-logo-container {
+      background-color: #000;
+    }
+    
+    .wsj-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(80px, 16vw, 200px);
+      font-weight: 400;
+      letter-spacing: -3px;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      transition: color 0.3s ease;
+      cursor: default;
+    }
+    
+    .interactive:hover .wsj-text {
+      color: #fff;
+    }
+    
+    .wsj-j {
+      display: inline-block;
+      color: inherit;
+    }
+    
+    .interactive:hover .wsj-j {
+      color: #ff003c;
+    }
+
+    .explore-taskbar {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #000;
+      z-index: 100;
+      position: sticky;
+      top: 0;
+    }
+
+    .taskbar-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', Courier, monospace;
+      font-size: 0.75rem;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .taskbar-back:hover {
+      opacity: 1;
+    }
+
+    .taskbar-title {
+      font-family: 'JetBrains Mono', Courier, monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .grid-container {
+      width: 100%;
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      grid-auto-rows: 50vh;
+    }
+
+    .project-cell {
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .project-cell.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .project-image-half {
+      flex: 1;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%) opacity(0.5);
+      transition: filter 0.5s ease, opacity 0.5s ease;
+    }
+
+    .project-cell:hover .project-image-half {
+      filter: grayscale(0%) opacity(1);
+    }
+
+    .project-info-half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-name {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .project-type {
+      font-family: 'JetBrains Mono', Courier, monospace;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+    
+    .project-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      opacity: 0.6;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    /* Remove explicit borders, grid gap will handle it */
+    @media (max-width: 768px) {
+      .explore-taskbar {
+        padding: 0 1rem;
+      }
+      .grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1px; /* Maintain the gap line on mobile */
+      }
+      .project-cell {
+        flex-direction: column;
+        height: auto;
+        min-height: 50vh;
+      }
+      .project-image-half {
+        height: 55vh;
+        width: 100%;
+      }
+      .project-info-half {
+        padding: 1.5rem;
+        flex: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="explore-taskbar">
+    <a href="../" class="taskbar-back">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>BACK TO GRID</span>
+    </a>
+    <div class="taskbar-title">[explore]</div>
+  </div>
+
+  <div class="grid-container">
+    <a href="#" target="_blank" class="grid-cell project-cell interactive">
+      <div class="project-image-half" style="background-image: url('../assets/images/gabriel-explore.png');"></div>
+      <div class="project-info-half">
+        <div class="project-name">gabriel</div>
+        <div class="project-type">bot</div>
+        <div class="project-desc">Automated task execution engine with advanced workflow capabilities.</div>
+      </div>
+    </a>
+    
+    <a href="#" target="_blank" class="grid-cell project-cell interactive">
+      <div class="wsj-logo-container">
+        <span class="wsj-text">WS<span class="wsj-j">J</span></span>
+      </div>
+      <div class="project-info-half">
+        <div class="project-name">wsj</div>
+        <div class="project-type">website</div>
+        <div class="project-desc">A highly scalable web platform with minimalist design architecture.</div>
+      </div>
+    </a>
+    
+    <a href="#" target="_blank" class="grid-cell project-cell interactive">
+      <div class="project-image-half" style="background-image: url('../assets/images/cipung.png');"></div>
+      <div class="project-info-half">
+        <div class="project-name">cipung</div>
+        <div class="project-type">website</div>
+        <div class="project-desc">Interactive web experience focusing on seamless user interactions.</div>
+      </div>
+    </a>
+
+    <a href="../tempmail/" target="_blank" class="grid-cell project-cell interactive">
+      <div class="project-image-half" style="background-image: url('../assets/images/tempmail-explore.png');"></div>
+      <div class="project-info-half">
+        <div class="project-name">temp[mail]</div>
+        <div class="project-type">utility</div>
+        <div class="project-desc">A disposable email service for testing and privacy protection.</div>
+      </div>
+    </a>
+    
+    <a href="../image2ascii/" target="_blank" class="grid-cell project-cell interactive">
+      <div class="project-image-half" style="position: relative; background: none;">
+        <div style="position: absolute; inset: 0; background-image: url('../assets/images/crayon.png'); background-size: cover; background-position: center; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);"></div>
+        <div style="position: absolute; inset: 0; background-image: url('../assets/images/crayon-ascii.svg'); background-size: cover; background-position: center; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);"></div>
+      </div>
+      <div class="project-info-half">
+        <div class="project-name">image2[ascii]</div>
+        <div class="project-type">tool</div>
+        <div class="project-desc">Creative tool to convert standard images into raw ASCII art.</div>
+      </div>
+    </a>
+    
+    <div class="grid-cell project-cell" style="cursor: not-allowed;">
+      <div class="project-image-half" style="background-image: url('https://picsum.photos/seed/soon/800/600'); opacity: 0.1;"></div>
+      <div class="project-info-half">
+        <div class="project-name" style="opacity: 0.5;">coming soon</div>
+        <div class="project-type" style="opacity: 0.3;">classified</div>
+        <div class="project-desc" style="opacity: 0.2;">Classified project currently under heavy development.</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

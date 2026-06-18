@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 125%;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.ascii-panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.asc-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #000;
+  z-index: 100;
+}
+
+.asc-close-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', Courier, monospace;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.asc-close-btn:hover {
+  opacity: 1;
+}
+
+.asc-title {
+  font-family: 'JetBrains Mono', Courier, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.asc-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.asc-sidebar {
+  width: 380px;
+  border-right: 1px solid #333;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #050505;
+  overflow-y: auto;
+}
+
+/* Upload Zone */
+.asc-upload-zone {
+  border: 1px dashed #444;
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #0a0a0a;
+}
+
+.asc-upload-zone:hover, .asc-upload-zone.dragover {
+  border-color: #888;
+  background-color: #111;
+}
+
+.asc-upload-zone p {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+.asc-subtext {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+/* Settings Card */
+.asc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.asc-card-header {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #888;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #222;
+}
+
+.asc-setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.asc-switch-group {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.asc-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #ccc;
+}
+
+/* Custom Select Dropdown */
+.asc-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.asc-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #0a0a0a;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  padding-right: 2.5rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.asc-select:hover, .asc-select:focus {
+  border-color: #666;
+}
+
+.asc-select-icon {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+}
+
+.asc-select option {
+  background-color: #111;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+/* Custom Range Slider */
+.asc-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.asc-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2px;
+  background: #333;
+  outline: none;
+}
+
+.asc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.asc-val {
+  width: 30px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #888;
+}
+
+/* Toggle Switch */
+.asc-switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+}
+
+.asc-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.asc-slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.asc-slider-round:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .asc-slider-round {
+  background-color: #fff;
+}
+
+input:checked + .asc-slider-round:before {
+  transform: translateX(16px);
+  background-color: #000;
+}
+
+/* Main Display */
+.asc-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #030303;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+.asc-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #222;
+  background-color: #0a0a0a;
+}
+
+.asc-toolbar-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #888;
+}
+
+.asc-toolbar-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.asc-icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.asc-icon-btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.asc-output-container {
+  flex: 1;
+  overflow: auto;
+  padding: 2rem;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+}
+
+.asc-output {
+  font-family: "JetBrains Mono", Courier, monospace;
+  font-size: 8px;
+  line-height: 8px;
+  letter-spacing: 0;
+  color: #fff;
+  white-space: pre;
+  text-align: left;
+  margin: auto;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@media (max-width: 768px) {
+  .asc-content {
+    flex-direction: column;
+  }
+  
+  .asc-sidebar {
+    width: 100%;
+    height: 40vh;
+    flex-shrink: 0;
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+}

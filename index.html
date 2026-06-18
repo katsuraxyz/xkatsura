@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xkatsura | Concepts</title>
+  <link rel="stylesheet" href="assets/css/styles.css?v=17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Global Mobile Navbar -->
+  <nav class="mobile-navbar">
+    <div class="navbar-brand">
+      <svg class="brand-svg" viewBox="0 0 80 40" width="80" height="40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="brand-shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.9"/>
+          </filter>
+        </defs>
+        <text x="0" y="32" font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#fff" filter="url(#brand-shadow)">X桂</text>
+      </svg>
+    </div>
+    <button class="hamburger-menu mobile-hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Fullscreen Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <nav class="mobile-menu-links">
+      <a href="tempmail/" class="menu-link">TEMP MAIL</a>
+      <a href="image2ascii/" class="menu-link">IMAGE2[ASCII]</a>
+      <a href="#contact-section" class="menu-link">EMAIL</a>
+      <a href="https://github.com/katsuraxyz" target="_blank" class="menu-link">GITHUB</a>
+      <a href="https://x.com/kattttttttssss" target="_blank" class="menu-link">X (TWITTER)</a>
+    </nav>
+  </div>
+
+  <div class="grid-container">
+    
+    <!-- Cell 1: Swirl (Row 1-2, Col 1) -->
+    <div class="grid-cell cell-swirl" id="swirl-container">
+      <div class="gabriel-bg"></div>
+      <div class="ascii-mask" id="ascii-mask">
+        <pre class="ascii-art" id="ascii-gabriel"></pre>
+      </div>
+    </div>
+
+    <!-- Cell 2: Bottom Text (Row 3, Col 1) -->
+    <div class="grid-cell cell-info interactive" onclick="window.location.href='explore/'">
+      <div class="info-top">personal portfolio — 2026</div>
+      <div class="info-middle">
+        <div class="info-title">
+          <span><span id="hello-text">HELLO, I'M</span><span class="hello-cursor"></span></span>
+          <h1>xkatsura</h1>
+        </div>
+        <p class="info-desc">Building Things One Prompt at a Time.</p>
+      </div>
+      <div class="info-bottom">
+        <span class="explore-link">explore my work</span>
+      </div>
+    </div>
+
+    <!-- Cell 3: GitHub (Row 1, Col 2) -->
+    <a href="https://github.com/katsuraxyz" target="_blank" class="grid-cell cell-center cell-github interactive" aria-label="GitHub">
+      <div class="social-wrapper">
+        <img src="assets/images/GitHub_Invertocat_White.svg" alt="GitHub" class="social-img img-normal">
+        <img src="assets/images/GitHub_Invertocat_Black.svg" alt="GitHub" class="social-img img-hover">
+      </div>
+    </a>
+
+    <a href="tempmail/" class="grid-cell cell-center cell-shop interactive" style="text-decoration: none; color: inherit;" id="works-section">
+      <span class="bracket-text">temp[<span class="typing-text" style="--chars: 4ch; --steps: 4;">mail</span><span class="typing-cursor"></span>]</span>
+    </a>
+
+    <!-- Cell 5: X Logo (Row 3, Col 2) -->
+    <a href="https://x.com/kattttttttssss" target="_blank" class="grid-cell cell-center cell-x interactive" aria-label="X (Twitter)">
+      <div class="social-wrapper">
+        <img src="assets/images/x-white.png" alt="X" class="social-img img-normal">
+        <img src="assets/images/x-black.png" alt="X" class="social-img img-hover">
+      </div>
+    </a>
+
+    <!-- Cell 6: About (Row 1, Col 3) -->
+    <a href="image2ascii/" class="grid-cell cell-usa interactive" style="text-decoration: none; color: inherit;" id="about-section">
+      <span class="bracket-text">image2[<span class="typing-text" style="--chars: 5ch; --steps: 5;">ascii</span><span class="typing-cursor"></span>]</span>
+    </a>
+
+    <!-- Cell 7: Live Clock Widget (Row 2, Col 3) -->
+    <div class="grid-cell cell-center cell-clock interactive">
+      <div class="clock-widget">
+        <div class="clock-label">LOCAL TIME</div>
+        <div class="clock-time" id="live-time">00:00:00</div>
+        <div class="clock-date" id="live-date">---</div>
+      </div>
+    </div>
+
+    <!-- Cell 8: Contact & Icons (Row 3, Col 3) -->
+    <div class="grid-cell cell-center cell-uk interactive" id="contact-section" title="Click to copy email">
+      <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+        <span class="bracket-text email-text" style="font-size: 1rem;">contact@xkatsura.com</span>
+        <svg class="icon copy-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/ascii-art-new.js"></script>
+  <script src="assets/js/script.js?v=6"></script>
+</body>
+</html>

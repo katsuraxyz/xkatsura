@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xkatsura | Image to ASCII</title>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="ascii-panel">
+    <div class="asc-header">
+      <a href="../" class="asc-close-btn" aria-label="Back to Grid">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>BACK TO GRID</span>
+      </a>
+      <div class="asc-title">image2[ascii]</div>
+    </div>
+    
+    <div class="asc-content">
+      <!-- Left Column: Settings & Upload -->
+      <div class="asc-sidebar">
+        <div class="asc-upload-zone" id="asc-upload-zone">
+          <input type="file" id="asc-file-input" accept="image/*" hidden>
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          <p>DRAG & DROP IMAGE<br><span class="asc-subtext">OR CLICK TO BROWSE</span></p>
+        </div>
+
+        <div class="asc-card">
+          <div class="asc-card-header">SETTINGS</div>
+          
+          <div class="asc-setting-group">
+            <label class="asc-label" for="asc-gradient">ASCII GRADIENT</label>
+            <div class="asc-select-container">
+              <select id="asc-gradient" class="asc-select">
+                <option value="normal">Normal</option>
+                <option value="standard">Standard (Detailed)</option>
+                <option value="alphabetic">Alphabetic</option>
+                <option value="alphanumeric">Alphanumeric</option>
+                <option value="math">Math Symbols</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="binary">Binary</option>
+                <option value="blocks">Blocks</option>
+              </select>
+              <svg class="asc-select-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="asc-setting-group">
+            <label class="asc-label" for="asc-width">RESOLUTION (WIDTH)</label>
+            <div class="asc-slider-container">
+              <input type="range" id="asc-width" min="20" max="300" value="100" class="asc-slider">
+              <span id="asc-width-val" class="asc-val">100</span>
+            </div>
+          </div>
+          
+          <div class="asc-setting-group">
+            <label class="asc-label" for="asc-contrast">CONTRAST</label>
+            <div class="asc-slider-container">
+              <input type="range" id="asc-contrast" min="-100" max="100" value="0" class="asc-slider">
+              <span id="asc-contrast-val" class="asc-val">0</span>
+            </div>
+          </div>
+
+          <div class="asc-setting-group asc-switch-group">
+            <label class="asc-label" for="asc-invert">INVERT COLORS</label>
+            <label class="asc-switch">
+              <input type="checkbox" id="asc-invert">
+              <span class="asc-slider-round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Output -->
+      <div class="asc-main">
+        <div class="asc-toolbar">
+          <span class="asc-toolbar-title">OUTPUT</span>
+          <div class="asc-toolbar-actions">
+            <button class="asc-icon-btn" id="asc-copy-btn" title="Copy ASCII">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>COPY</span>
+            </button>
+            <button class="asc-icon-btn" id="asc-download-btn" title="Download .txt">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>TXT</span>
+            </button>
+            <button class="asc-icon-btn" id="asc-download-png-btn" title="Download .png">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>PNG</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="asc-output-container">
+          <pre id="asc-output" class="asc-output">Awaiting Image...</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <canvas id="asc-canvas" style="display:none;"></canvas>
+  <script src="script.js?v=8"></script>
+</body>
+</html>
