@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xkatsura | Concepts</title>
   <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-  <link rel="stylesheet" href="assets/css/styles.css?v=18">
+  <link rel="stylesheet" href="assets/css/styles.css?v=19">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/images/gabriel.webp">
 </head>
 <body>
+  <!-- Mobile Warning Overlay -->
+  <div class="mobile-warning-overlay" id="mobile-warning-overlay">
+    <div class="mobile-warning-content">
+      <img src="assets/images/huft_opt.jpg" alt="Huft" class="mobile-warning-img">
+      <p class="mobile-warning-text">For the best experience,<br>please use a PC.</p>
+      <button class="mobile-warning-btn" id="mobile-warning-dismiss">CONTINUE</button>
+    </div>
+  </div>
   <!-- Global Mobile Navbar -->
   <nav class="mobile-navbar">
     <div class="navbar-brand">
@@ -108,6 +116,6 @@
   </div>
 
   <script src="assets/js/ascii-art-new.js"></script>
-  <script src="assets/js/script.js?v=6"></script>
+  <script src="assets/js/script.js?v=7"></script>
 </body>
 </html>

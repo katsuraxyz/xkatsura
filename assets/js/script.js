@@ -188,3 +188,19 @@ if (helloText) {
     typeGreeting();
   }, 3000);
 }
+
+// Mobile Warning Overlay Logic
+const mobileWarningOverlay = document.getElementById('mobile-warning-overlay');
+const mobileWarningDismiss = document.getElementById('mobile-warning-dismiss');
+
+if (mobileWarningOverlay && mobileWarningDismiss) {
+  // Check if user already dismissed it in this session
+  if (sessionStorage.getItem('mobileWarningDismissed') === 'true') {
+    mobileWarningOverlay.classList.add('hidden');
+  }
+
+  mobileWarningDismiss.addEventListener('click', () => {
+    mobileWarningOverlay.classList.add('hidden');
+    sessionStorage.setItem('mobileWarningDismissed', 'true');
+  });
+}
