@@ -4,7 +4,6 @@ const tmCountdown = document.getElementById('tm-countdown');
 const tmMessageList = document.getElementById('tm-message-list');
 const tmInboxCount = document.getElementById('tm-inbox-count');
 
-const tmCardHeader = document.getElementById('tm-card-header');
 const tmAddressContainer = document.getElementById('tm-address-container');
 const tmInputContainer = document.getElementById('tm-custom-input-container');
 const tmCreateInitBtn = document.getElementById('tm-create-init-btn');
@@ -196,7 +195,6 @@ if (tmSubmitBtn) {
     tmInputContainer.style.display = 'none';
     tmSubmitBtn.style.display = 'none';
     
-    tmCardHeader.style.display = 'block';
     tmAddressContainer.style.display = 'flex';
     tmGenerateNewBtn.style.display = 'block';
     
@@ -207,7 +205,6 @@ if (tmSubmitBtn) {
 if (tmGenerateNewBtn) {
   tmGenerateNewBtn.addEventListener('click', () => {
     // Go back to input state
-    tmCardHeader.style.display = 'none';
     tmAddressContainer.style.display = 'none';
     tmGenerateNewBtn.style.display = 'none';
     
