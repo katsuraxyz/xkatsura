@@ -241,3 +241,18 @@ window.addEventListener('DOMContentLoaded', () => {
   renderInbox();
   tmCountdown.textContent = '--';
 });
+
+// Mobile Warning Overlay Logic
+const mobileWarningOverlay = document.getElementById('mobile-warning-overlay');
+const mobileWarningDismiss = document.getElementById('mobile-warning-dismiss');
+
+if (mobileWarningOverlay && mobileWarningDismiss) {
+  if (sessionStorage.getItem('mobileWarningDismissed') === 'true') {
+    mobileWarningOverlay.classList.add('hidden');
+  }
+
+  mobileWarningDismiss.addEventListener('click', () => {
+    mobileWarningOverlay.classList.add('hidden');
+    sessionStorage.setItem('mobileWarningDismissed', 'true');
+  });
+}
