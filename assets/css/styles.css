@@ -648,3 +648,8 @@ body {
   }
 }
 
+/* Hide mobile warning on desktop */
+.mobile-warning-overlay {
+  display: none;
+}
+
