@@ -531,11 +531,13 @@ body {
   }
 
   .menu-link {
+    font-family: 'JetBrains Mono', Courier, monospace;
     color: #fff;
     text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
     transition: color 0.3s ease, transform 0.3s ease;
   }
 
