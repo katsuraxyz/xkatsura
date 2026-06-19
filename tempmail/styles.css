@@ -126,8 +126,11 @@ body {
   color: #fff;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.75rem;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
+  margin-right: 0.5rem;
   outline: none;
+  text-overflow: ellipsis;
 }
 
 .white-box .tm-custom-input {
