@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xkatsura | Temp Mail</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,9 +26,10 @@
       <!-- Left Column: Generator & Controls -->
       <div class="tm-sidebar">
         <div class="tm-card tm-generator-card">
-          <div class="tm-card-header">YOUR TEMPORARY ADDRESS</div>
-          <div class="tm-address-container">
-            <span class="tm-address" id="tm-address">loading...</span>
+          <div class="tm-card-header" id="tm-card-header" style="display: none;">YOUR TEMPORARY ADDRESS</div>
+          
+          <div class="tm-address-container" id="tm-address-container" style="display: none;">
+            <span class="tm-address" id="tm-address">...</span>
             <button class="tm-icon-btn copy-btn" id="tm-copy-btn" title="Copy to clipboard">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -36,9 +37,15 @@
               </svg>
             </button>
           </div>
-          <div class="tm-actions">
-            <button class="tm-btn" id="tm-generate-btn">GENERATE NEW</button>
+          
+          <div class="tm-custom-input-container white-box" id="tm-custom-input-container" style="display: none;">
+            <input type="text" class="tm-custom-input" id="tm-custom-input" placeholder="username / empty for random" autocomplete="off">
+            <span class="tm-domain">@xkatsura.com</span>
           </div>
+
+          <button class="tm-btn" id="tm-create-init-btn">CREATE EMAIL</button>
+          <button class="tm-btn" id="tm-submit-btn" style="display: none;">GENERATE</button>
+          <button class="tm-btn" id="tm-generate-new-btn" style="display: none;">CREATE NEW EMAIL</button>
         </div>
         
         <div class="tm-status">

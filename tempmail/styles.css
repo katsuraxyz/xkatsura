@@ -105,6 +105,54 @@ body {
   white-space: nowrap;
 }
 
+.tm-custom-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #333;
+  padding: 1rem;
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.tm-custom-input-container.white-box {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.tm-custom-input {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  width: 100%;
+  outline: none;
+}
+
+.white-box .tm-custom-input {
+  color: #000;
+}
+
+.tm-custom-input::placeholder {
+  color: #444;
+}
+
+.white-box .tm-custom-input::placeholder {
+  color: #888;
+}
+
+.tm-domain {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.white-box .tm-domain {
+  color: #555;
+}
+
 .tm-icon-btn {
   background: none;
   border: none;

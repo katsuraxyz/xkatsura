@@ -1,9 +1,16 @@
 const tmAddress = document.getElementById('tm-address');
 const tmCopyBtn = document.getElementById('tm-copy-btn');
-const tmGenerateBtn = document.getElementById('tm-generate-btn');
 const tmCountdown = document.getElementById('tm-countdown');
 const tmMessageList = document.getElementById('tm-message-list');
 const tmInboxCount = document.getElementById('tm-inbox-count');
+
+const tmCardHeader = document.getElementById('tm-card-header');
+const tmAddressContainer = document.getElementById('tm-address-container');
+const tmInputContainer = document.getElementById('tm-custom-input-container');
+const tmCreateInitBtn = document.getElementById('tm-create-init-btn');
+const tmSubmitBtn = document.getElementById('tm-submit-btn');
+const tmGenerateNewBtn = document.getElementById('tm-generate-new-btn');
+const tmCustomInput = document.getElementById('tm-custom-input');
 
 const tmInboxView = document.getElementById('tm-inbox-view');
 const tmDetailView = document.getElementById('tm-detail-view');
@@ -53,11 +60,11 @@ function generateRandomAddress() {
   for(let i = 0; i < 8; i++) {
     prefix += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return `${prefix}@xkatsura.online`;
+  return `${prefix}@xkatsura.com`;
 }
 
-function initTempMail() {
-  currentAddress = generateRandomAddress();
+function setAddressAndStart(address) {
+  currentAddress = address;
   tmAddress.textContent = currentAddress;
   inboxMessages = [];
   renderInbox();
@@ -163,15 +170,56 @@ function closeEmailDetail() {
 }
 
 // Event Listeners
-if (tmGenerateBtn) {
-  tmGenerateBtn.addEventListener('click', () => {
-    initTempMail();
+if (tmCreateInitBtn) {
+  tmCreateInitBtn.addEventListener('click', () => {
+    tmCreateInitBtn.style.display = 'none';
+    tmInputContainer.style.display = 'flex';
+    tmSubmitBtn.style.display = 'block';
+    tmCustomInput.focus();
+  });
+}
+
+if (tmSubmitBtn) {
+  tmSubmitBtn.addEventListener('click', () => {
+    const customName = tmCustomInput.value.trim();
+    let finalAddress = '';
+    if (customName) {
+      finalAddress = customName + '@xkatsura.com';
+    } else {
+      finalAddress = generateRandomAddress();
+    }
+    
+    setAddressAndStart(finalAddress);
     closeEmailDetail();
+    
+    // Move to active state
+    tmInputContainer.style.display = 'none';
+    tmSubmitBtn.style.display = 'none';
+    
+    tmCardHeader.style.display = 'block';
+    tmAddressContainer.style.display = 'flex';
+    tmGenerateNewBtn.style.display = 'block';
+    
+    tmCustomInput.value = '';
+  });
+}
+
+if (tmGenerateNewBtn) {
+  tmGenerateNewBtn.addEventListener('click', () => {
+    // Go back to input state
+    tmCardHeader.style.display = 'none';
+    tmAddressContainer.style.display = 'none';
+    tmGenerateNewBtn.style.display = 'none';
+    
+    tmInputContainer.style.display = 'flex';
+    tmSubmitBtn.style.display = 'block';
+    tmCustomInput.focus();
   });
 }
 
 if (tmCopyBtn) {
   tmCopyBtn.addEventListener('click', () => {
+    if (!currentAddress) return;
     navigator.clipboard.writeText(currentAddress).then(() => {
       const icon = tmCopyBtn.innerHTML;
       tmCopyBtn.innerHTML = `
@@ -192,5 +240,7 @@ if (tmBackToInbox) {
 
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', () => {
-  initTempMail();
+  tmAddress.textContent = '...';
+  renderInbox();
+  tmCountdown.textContent = '--';
 });
